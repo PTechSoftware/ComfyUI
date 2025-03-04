@@ -8,7 +8,7 @@ RUN apt update && apt install -y \
 
 # Clonar ComfyUI
 WORKDIR /app
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
+RUN git clone https://github.com/IgnacioPerez98/ComfyUI.git .
 #RUN pip3 install -r requirements.txt
 RUN apt update
 RUN apt install nano
