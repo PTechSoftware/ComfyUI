@@ -19,9 +19,9 @@ services:
               count: all
               capabilities: [gpu]
     volumes:
-      - /home/ptech/comfyui/models:/app/models
-      - /home/ptech/comfyui/output:/app/output
-      - /home/ptech/comfyui/input:/app/input
-      - /home/ptech/comfyui/custom_nodes:/app/custom_nodes
+      - ./models:/app/models
+      - ./output:/app/output
+      - ./input:/app/input
+      - ./custom_nodes:/app/custom_nodes
     stdin_open: true
     tty: true
