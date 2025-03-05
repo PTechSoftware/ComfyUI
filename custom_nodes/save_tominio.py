@@ -20,7 +20,10 @@ class SaveToMinIO:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "images": ("IMAGE",),
+                "images": ("IMAGE",),                
+                "host": ("STRING", {"default": "10.0.0.13:9000"}),
+                "key": ("STRING", {"default": "s3key"}),
+                "passwrd": ("STRING", {"default": "s3pass"}),
                 "bucket_name": ("STRING", {"default": "kielcesa"}),
             }
         }
@@ -29,7 +32,7 @@ class SaveToMinIO:
     FUNCTION = "upload_to_minio"
     CATEGORY = "MinIO"
 
-    def upload_to_minio(self, images, bucket_name:str):
+    def upload_to_minio(self, images,host,key,passwrd, bucket_name:str):
         """
         Convierte la imagen en un formato compatible y la sube a MinIO.
         """
@@ -43,9 +46,9 @@ class SaveToMinIO:
         
         # Subir a MinIO
         # Conectar con MinIO (SIN región)
-        client = Minio("10.0.0.13:9000",
-            access_key="qGeESB3qVMuJFrgmPEsc",
-            secret_key="31KSMB0hOrMNySl3YEDfpQZBEwzJaRvd7bZJJEor",
+        client = Minio(host,
+            access_key=key,
+            secret_key=passwrd,
             secure=False,
         )
         for i, img in enumerate(images):
